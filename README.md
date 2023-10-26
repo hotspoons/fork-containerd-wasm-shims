@@ -59,6 +59,11 @@ To use one of these containerd shims in Kubernetes, you must do the following:
 ```toml
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.spin]
   runtime_type = "io.containerd.spin.v1"
+
+### If using Enterprise Linux (RedHat, Fedora, Rocky, Amazon Linux 2, etc.) uncomment the following 2 lines:
+#[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+#  SystemdCgroup = "true"
+
 ```
 
 3. Apply a runtime class that contains a handler that matches the "spin" config runtime name from step 2.
